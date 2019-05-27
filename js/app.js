@@ -1,29 +1,13 @@
-var app = (function () {
-  var loadBanner = function () {
-    var bannerSmall = document.querySelector('.banner-small')
+// navbar burger
+$(document).ready(function() {
 
-    // can't just listen the bannerSmall's load event
-    // but why ?
-    var img = new Image()
-    img.src = bannerSmall.src
-    img.addEventListener('load', function (e) {
-      bannerSmall.classList.add('loaded')
-    }, false)
+  // Check for click events on the navbar burger icon
+  $(".navbar-burger").click(function() {
 
-    var bannerLarge = new Image()
-    bannerLarge.src = bannerSmall.dataset.src
-    bannerLarge.addEventListener('load', function (e) {
-      e.target.classList.add('loaded')
-    }, false)
+    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+    $(".navbar-burger").toggleClass("is-active");
+    $(".navbar-menu").toggleClass("is-active");
 
-    bannerSmall.parentNode.appendChild(bannerLarge)
-  }
+  });
+});
 
-  return {
-    loadBanner: loadBanner
-  }
-})()
-
-window.addEventListener('load', function (e) {
-  app.loadBanner()
-}, false)
